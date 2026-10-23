@@ -1,4 +1,4 @@
-1.Pvivate keys ;if anyone gets hold of your private keys,they could impersonate you , gain unauthorised access to remote  servers and push malicious code under your identity.
+1.EDNA Pvivate keys ;if anyone gets hold of your private keys,they could impersonate you , gain unauthorised access to remote  servers and push malicious code under your identity.
 
 2.Git push: sends your saved local commits up the remote respiratory like github to bck up ypur work while Git push:downloads remote updates down to your local machine and merges them into your workspace.
 
