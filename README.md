@@ -1,4 +1,4 @@
-### ***This respiratory contains my answers from the mentorship modules , my notes and practicals.*** 
+### ***This repository contains my answers from the mentorship modules , my notes and practicals.*** 
 | Module | Answers | Status |
 |---|---|---|
 | Setup | [Setup](setup/README.md) | Done |
