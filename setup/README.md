@@ -58,6 +58,40 @@ Its using the SSH method .
 
  ## MY PERSONAL NOTES.
 
+ ### Prompt Status Indicators 
+* **`?`**: Untracked files exist in the repository.
+* **`●`**: Tracked files have been modified but not staged.
+* **`✚`**: Changes are staged and ready to be committed (`git add`).
+* **`↑N`**: Local branch is ahead of the remote by N commits (needs `git push`).
+* **`↓N`**: Local branch is behind the remote by N commits (needs `git pull`).
+
+## ***GIT COMMANDS***
+
+### Checking Status & History
+* **`git status`**: Shows modified files, staged changes, and untracked files .
+
+### Saving Changes
+
+```
+git add folder name/file name 
+```
+ Stages changes in a specific file, preparing it for a commit.
+
+```
+git add 
+````
+ Stages **all** modified, deleted, and new files in the entire directory.
+```
+git commit -m "your message"
+```
+ Permanently saves your staged snapshot into the version history with a descriptive message.
+
+ ``` 
+git push
+```  
+Pushes the changes made to git.
+
+
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 
 
