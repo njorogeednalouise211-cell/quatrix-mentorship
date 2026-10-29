@@ -55,3 +55,11 @@ Its using the SSH method .
  **Command to switch  to HTTPS**:
  
  `git remote set-url origin https://quatrixglobal.com`
+
+ ## MY PERSONAL NOTES.
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+
+
+
