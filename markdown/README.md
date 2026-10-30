@@ -78,5 +78,106 @@ Used mainly to highlight important things like warnings and tips .
 
 
 
+## **MARKDOWN NOTES**
+
+1. **Headings**
+
+   ```
+   # heading 1
+   ## Heading 2
+   ### Heading 3
+   ```
+  
+space recquired after #
+
+2. **Emphasis**
+
+    ```
+    *italic*
+    **bold**
+    ***bold italic***
+    ~~strike through~~
+    ```
+
+3. **Lists**
+``` 
+- First item 
+- Second item
+  -nested item(space tab 2x)
+- Third item
+
+[] uncompleted task
+[x] completed tasks 
+```
+Recquires space after - or 1.
+
+A list needs a blank line before it, and nested items must be indented under their parent.
+
+4. **Inline and block codes**
+ 
+ - Inline codes - use backticks for a command ,filename,flag or value inside a sentence 
+ ```
+ `ssh`
+ `ls -la`
+ ```
+
+ - Block codes- uses three backticks, then the language for anything you would type on its own line, and for output.
+ ```
+cd ~/Documents/bash-sandbox
+
+touch exercise1.md
+
+ls
+```
+
+5. **Links and images**
+
+- They recquire a relative path to link the files with the repo.
+- Images need the file to be commited in the repo.
+
+```
+[the Setup module](../setup/README.md)
+[Debian](https://www.debian.org)
+![Screenshot of the prompt](images/prompt.png)
+```
+- To jump a heading in a file use 
+```
+file.md#heading-in-lowercase-with-dashes
+```
+
+6. **Tables**
+- The second row of dashes is recquired because it defines the tables.
+
+```
+
+| Command | Action | Example |
+| :--- | :--- | :--- |
+| `cp` | Copy a file | `cp file.txt ~/Documents/` |
+| `mv` | Move or rename | `mv file.txt new_name.txt` |
+| `rm` | Delete a file | `rm old_file.txt` |
+```
+
+7. **Quotes and alert blocks**
+
+```
+> A quote or a side remark.
+
+> [!NOTE]
+> Extra information the reader might want.
+
+> [!TIP]
+> A shortcut or a good habit.
+
+```
+
+
+
+ 
+
+
+
+
+
+
 
 
