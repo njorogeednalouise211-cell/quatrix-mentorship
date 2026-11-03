@@ -307,3 +307,1030 @@ cat ~/Documents/quatrix/quatrix-mentorship/week1.txt
   * **`.`** = The active folder path you are currently standing in.
   * **`..`** = Stepping exactly one level upward to the parent folder directory.
 
+
+### Absolute Path
+
+An absolute path gives the complete location of a file or folder, starting from the root directory (`/`).
+
+- It starts with `/` or `~`.
+- It works regardless of the current directory.
+- It provides the full location of a file or folder.
+
+Example:
+
+```bash
+ls /home/jdoe/Documents/quatrix/quatrix-mentorship
+```
+
+You can also use `~`, which represents the home directory:
+
+```bash
+ls ~/Documents/quatrix/quatrix-mentorship
+```
+
+### 1.2 Relative Path
+
+A relative path gives the location of a file or folder based on the current working directory.
+
+- It does not start with `/` or `~`.
+- It depends on where you are currently working.
+- It is usually shorter than an absolute path.
+
+Example:
+
+```bash
+ls quatrix/quatrix-mentorship
+```
+
+This works if your current directory is `~/Documents`.
+
+### Special Path Symbols
+
+| Symbol | Meaning |
+|---|---|
+| `.` | Current directory |
+| `..` | Parent directory (one level up) |
+| `../..` | Two levels up |
+| `~` | Home directory |
+
+### Difference Between Absolute and Relative Paths
+
+| Absolute Path | Relative Path |
+|---|---|
+| Gives the full location. | Gives the location from the current directory. |
+| Starts with `/` or `~`. | Does not start with `/` or `~`. |
+| Works from any directory. | Depends on the current directory. |
+
+**When to use them:**
+
+- Use absolute paths when you need to access a location from anywhere.
+- Use relative paths when working with files or folders close to your current location.
+
+---
+
+## Working With Other Folders Without Changing Directories
+
+You do not always need to use `cd` to enter a folder before working with its contents.
+
+You can provide the folder path directly in your command.
+
+### Examples
+
+**List the contents of another folder:**
+
+```bash
+ls ~/Documents/quatrix/quatrix-mentorship
+```
+
+**Read a file in another folder:**
+
+```bash
+cat ~/Documents/quatrix/quatrix-mentorship/week1.txt
+```
+
+**Copy a file into the current directory:**
+
+```bash
+cp ~/Documents/quatrix/quatrix-mentorship/week1.txt .
+```
+
+The `.` represents the current directory.
+
+**Move a file to another folder:**
+
+```bash
+mv ~/Documents/quatrix/quatrix-mentorship/week1.txt ~/Documents/career/
+```
+
+**Create a folder in another location:**
+
+```bash
+mkdir -p ~/Documents/career/cvs
+```
+
+**View a folder structure:**
+
+```bash
+tree -L 2 ~/Documents/quatrix
+```
+
+The `tree` command displays folders and files in a tree-like structure.
+
+
+---
+
+## Pipes and Wildcards
+
+###  Pipes (`|`)
+A pipe is used to connect two commands. It takes the result of the first command and sends it to the second command.
+
+
+It allows you to combine commands to perform different tasks.
+
+Example:
+
+```bash
+history | grep find
+```
+
+Explanation:
+
+1. `history` displays previously used commands.
+2. `|` passes the output to the next command.
+3. `grep find` searches for lines containing the word `find`.
+
+You can also use multiple pipes:
+
+```bash
+history | grep find | less
+```
+
+**Remember:** A pipe connects commands by passing output from one command to another.
+
+### Wildcards
+
+Wildcards are special characters used to match file and folder names.
+
+The two common wildcards are `*` and `?`.
+
+#### Asterisk (`*`)
+
+The asterisk represents any number of characters, including no characters.
+
+Examples:
+
+```bash
+ls *
+```
+
+Matches names in the current directory.
+
+```bash
+ls s*
+```
+
+Matches names starting with the letter `s`.
+
+```bash
+ls *l
+```
+
+Matches names ending with the letter `l`.
+
+```bash
+ls *pp*
+```
+
+Matches names containing `pp`.
+
+```bash
+ls *.txt
+```
+
+Matches files ending in `.txt`.
+
+#### Question Mark (`?`)
+
+The question mark represents exactly one character.
+
+Examples:
+
+```bash
+ls ????
+```
+
+Matches names containing exactly four characters.
+
+```bash
+ls ????*
+```
+
+Matches names containing at least four characters.
+
+#### Combining Wildcards
+
+You can combine `*` and `?` in one command.
+
+Example:
+
+```bash
+ls 31??_*
+```
+
+This matches names that start with `31`, followed by two characters, an underscore, and any number of additional characters.
+
+
+---
+
+## Redirection
+
+Redirection allows you to send command output into a file instead of displaying it on the terminal.
+
+| Symbol | Meaning |
+|---|---|
+| `>` | Sends output into a file, overwriting existing content |
+| `>>` | Adds output to the end of a file |
+| `2>` | Sends error messages into a file |
+| `2>&1` | Sends errors to the same destination as normal output |
+
+### Using `>` to Create or Overwrite a File
+
+```bash
+echo "Hello World" > output.txt
+```
+
+Creates `output.txt` and stores the text inside it.
+
+If the file already exists, its previous contents are overwritten.
+
+###  Using `>>` to Append Information
+
+```bash
+echo "Second line" >> output.txt
+```
+
+Adds another line without deleting the existing content.
+
+To display the contents:
+
+```bash
+cat output.txt
+```
+
+### Redirecting Error Messages
+
+```bash
+ls /nonexistent 2> errors.txt
+```
+
+Saves the error message in `errors.txt`.
+
+### Creating an Empty File
+
+You can create an empty file using:
+
+```bash
+touch my_notes.txt
+```
+
+Or:
+
+```bash
+echo -n > my_notes.txt
+```
+
+**Important:** Be careful when using `>` because it can erase the contents of an existing file.
+
+---
+
+## 6. Variables and Environment Variables
+
+A variable is a named space used to store information that can be used later.
+
+Example:
+
+```bash
+name="Edna"
+echo "$name"
+```
+
+Output:
+
+```text
+Edna
+```
+
+There should be no spaces around the `=` sign when assigning a variable.
+
+### Common Environment Variables
+
+| Variable | Meaning |
+|---|---|
+| `$HOME` | Home directory |
+| `$USER` | Current username |
+| `$SHELL` | Default shell |
+| `$PWD` | Current working directory |
+| `$PATH` | Directories searched for commands |
+
+Examples:
+
+```bash
+echo $HOME
+echo $USER
+echo $SHELL
+echo $PWD
+echo $PATH
+```
+
+To display environment variables:
+
+```bash
+printenv
+```
+
+---
+
+## Command Substitution
+
+Command substitution allows you to run a command and use its output inside another command.
+
+It uses the format:
+
+```bash
+$(command)
+```
+
+###  Display the Current Date
+
+```bash
+echo "Current time: $(date)"
+```
+
+The `date` command runs, and its output is inserted into the message.
+
+### Create a File Using Today's Date
+
+```bash
+touch log_$(date +%Y%m%d).txt
+```
+
+This creates a file with the current date in its name.
+
+Example:
+
+```text
+log_20261103.txt
+```
+
+
+
+
+
+---
+
+## sed – Stream Editor Basics
+
+`sed` stands for **Stream Editor**.
+
+It is a Linux command used to search, replace, delete and display specific parts of text.
+
+It is useful when working with text files.
+
+By default, `sed` displays changes on the terminal without modifying the original file.
+
+The `-i` option can be used to edit the original file.
+
+### Common sed Commands
+
+**1. Replace a word:**
+
+```bash
+sed 's/Nate/Nathan/g' file.txt
+```
+
+Replaces every occurrence of `Nate` with `Nathan` on each line.
+
+- `s` means substitute.
+- `g` means replace every occurrence on the line.
+
+**2. Delete a specific line:**
+
+```bash
+sed '3d' file.txt
+```
+
+Deletes the third line from the displayed output.
+
+**3. Delete a range of lines:**
+
+```bash
+sed '5,10d' file.txt
+```
+
+Deletes lines 5 to 10 from the displayed output.
+
+**4. Display specific lines:**
+
+```bash
+sed -n '2,4p' file.txt
+```
+
+Displays only lines 2 to 4.
+
+- `-n` prevents automatic printing.
+- `p` prints the selected lines.
+
+**5. Remove empty lines:**
+
+```bash
+sed '/^$/d' file.txt
+```
+
+Removes empty lines from the displayed output.
+
+**Remember:** `sed` is mainly used to manipulate text.
+
+---
+
+## awk – Column Extraction
+
+`awk` is a command used to process text and extract information from specific columns.
+
+It is useful when working with data arranged in rows and columns, such as CSV files.
+
+### Example 1: Extract File Names
+
+```bash
+ls -l | awk '{print $9}'
+```
+
+Displays the ninth column of a standard `ls -l` listing, which commonly contains the file name.
+
+### Example 2: Extract File Size and Name
+
+```bash
+ls -l | awk '{print $5, $9}'
+```
+
+Displays:
+
+- `$5` - File size.
+- `$9` - File name.
+
+### Example 3: Extract Information From a CSV File
+
+```bash
+awk -F';' '{print $2}' file.csv
+```
+
+Extracts the second column from a semicolon-separated file.
+
+- `-F';'` sets the column separator to a semicolon.
+- `$2` represents the second column.
+- `$0` represents the entire line.
+
+**Remember:** `awk` is mainly used to extract and process columns of text.
+
+---
+
+## Bash Scripting Basics
+
+A Bash script is a text file containing commands that Bash executes in order.
+
+Scripts are useful for automating tasks and avoiding repetitive typing.
+
+### 10.1 Creating Your First Script
+
+Example:
+
+```bash
+#!/bin/bash
+
+echo "Hello, $USER. Today is $(date +%A)."
+```
+
+Explanation:
+
+- `#!/bin/bash` is called the shebang. It tells the system to use Bash to run the script.
+- `echo` displays a message.
+- `$USER` displays the username.
+- `$(date +%A)` displays the current day.
+
+### Running a Script
+
+Save the script as `hello.sh`.
+
+Make it executable:
+
+```bash
+chmod +x hello.sh
+```
+
+Run it:
+
+```bash
+./hello.sh
+```
+
+You can also run it using:
+
+```bash
+bash hello.sh
+```
+
+The `./` means that the script is located in the current directory.
+
+### Variables, Arguments and Quoting
+
+Variables store information that can be used inside a script.
+
+Example:
+
+```bash
+name="Amber"
+echo "Hello, $name"
+```
+
+Output:
+
+```text
+Hello, Amber
+```
+
+### Script Arguments
+
+Arguments are values supplied when running a script.
+
+Example:
+
+```bash
+./hello.sh Edna
+```
+
+| Symbol | Meaning |
+|---|---|
+| `$0` | Name of the script |
+| `$1` | First argument |
+| `$2` | Second argument |
+| `$#` | Number of arguments |
+
+### Single Quotes vs Double Quotes
+
+Double quotes allow variables to expand:
+
+```bash
+echo "Hello, $name"
+```
+
+Single quotes display the text literally:
+
+```bash
+echo 'Hello, $name'
+```
+
+**Remember:** Double quotes expand variables, while single quotes preserve the text exactly as written.
+
+### 10.3 Exit Status
+
+An exit status tells you whether a command completed successfully.
+
+- `0` means success.
+- A non-zero number means failure or an error.
+
+To display the exit status of the last command:
+
+```bash
+echo $?
+```
+
+Example:
+
+```bash
+ls /etc
+echo $?
+```
+
+A successful command normally returns `0`.
+
+### Useful Operators
+
+```bash
+command1 && command2
+```
+
+Runs `command2` only if `command1` succeeds.
+
+```bash
+command1 || command2
+```
+
+Runs `command2` only if `command1` fails.
+
+Inside a script:
+
+```bash
+exit 0
+```
+
+Ends the script successfully.
+
+```bash
+exit 1
+```
+
+Ends the script with an error status.
+
+###  Decisions Using if Statements
+
+An `if` statement allows a script to make decisions based on conditions.
+
+Example:
+
+```bash
+if [ -f "$1" ]; then
+    echo "$1 is a file"
+elif [ -d "$1" ]; then
+    echo "$1 is a directory"
+else
+    echo "$1 does not exist"
+fi
+```
+
+
+- `if` checks the first condition.
+- `-f` checks whether the path is a regular file.
+- `elif` checks another condition.
+- `-d` checks whether the path is a directory.
+- `else` runs if the earlier conditions are false.
+- `fi` ends the statement.
+
+### Useful File Tests
+
+| Test | Meaning |
+|---|---|
+| `-e` | Checks whether something exists |
+| `-f` | Checks whether it is a regular file |
+| `-d` | Checks whether it is a directory |
+| `-z` | Checks whether a string is empty |
+| `-n` | Checks whether a string is not empty |
+| `-eq` | Checks whether two numbers are equal |
+| `-lt` | Checks whether a number is less than another |
+| `-gt` | Checks whether a number is greater than another |
+
+**Important:** Spaces inside `[ ]` are required.
+
+Correct:
+
+```bash
+[ -f "$1" ]
+```
+
+Incorrect:
+
+```bash
+[-f "$1"]
+```
+
+### Repeating Commands Using Loops
+
+Loops allow you to repeat commands multiple times.
+
+There are two common types: `for` and `while`.
+
+#### For Loop
+
+A `for` loop repeats commands for each item in a list.
+
+Example:
+
+```bash
+for f in *.txt; do
+    echo "Found $f"
+done
+```
+
+Displays the names of matching `.txt` files in the current directory.
+
+#### While Loop
+
+A `while` loop repeats commands while a condition remains true.
+
+Example:
+
+```bash
+while read -r line; do
+    echo "Line: $line"
+done < file.txt
+```
+
+Reads the file one line at a time and displays each line.
+
+### Asking the User for Information
+
+The `read` command allows a script to receive information from the user.
+
+Example:
+
+```bash
+read -p "What is your name? " name
+echo "Hello, $name"
+```
+
+The script asks for a name and displays a greeting.
+
+### Debugging and Checking Scripts
+
+Debugging means finding and correcting errors in a script.
+
+**Using bash -x:**
+
+```bash
+bash -x hello.sh
+```
+
+Displays commands as they execute, helping you identify problems.
+
+**Using ShellCheck:**
+
+```bash
+shellcheck hello.sh
+```
+
+ShellCheck checks scripts for common errors and possible problems.
+
+---
+
+## Files, Folders and Permissions
+
+Linux uses permissions to control who can access, read, modify or execute files and folders.
+
+
+```bash
+ls
+```
+
+- Lists files and folders in the current directory.
+
+```bash
+ls -d */
+```
+
+- Lists only directories.
+
+```bash
+ls -p | grep -v /
+```
+
+- Lists files while excluding directories.
+
+```bash
+find . -maxdepth 1 -type f
+```
+
+- Finds files in the current directory.
+
+```bash
+find . -maxdepth 1 -type d
+```
+
+- Finds directories in the current directory.
+
+### Users and Groups
+
+Linux uses users and groups to manage access to files.
+
+Every file has:
+
+- **Owner:** The user who owns the file.
+- **Group:** The group associated with the file.
+- **Others:** Everyone else.
+
+
+| Command | Purpose |
+|---|---|
+| `whoami` | Displays your username |
+| `groups` | Displays the groups you belong to |
+| `id` | Displays your user and group IDs |
+
+### File and Folder Permissions
+
+Linux has three main permissions:
+
+| Permission | Meaning | Numeric Value |
+|---|---|---|
+| `r` | Read | 4 |
+| `w` | Write | 2 |
+| `x` | Execute | 1 |
+
+For files:
+
+- Read allows you to view the contents.
+- Write allows you to modify the contents.
+- Execute allows you to run the file as a program or script.
+
+For directories:
+
+- Read allows you to list the names inside.
+- Write allows you to create or delete entries, subject to other permissions.
+- Execute allows you to enter the directory and access items inside.
+
+### Understanding ls -l
+
+Example:
+
+```text
+-rwxr-xr--
+```
+
+The first character shows the file type, while the remaining characters show permissions.
+
+| Part | Meaning |
+|---|---|
+| `-` | Regular file |
+| `rwx` | Owner permissions |
+| `r-x` | Group permissions |
+| `r--` | Others' permissions |
+
+A `d` in the first position represents a directory.
+
+**Changing Permissions Using chmod**
+
+`chmod` means change mode. It is used to change file and directory permissions.
+
+Permission values:
+
+| Number | Permission |
+|---|---|
+| `7` | Read, write and execute (`rwx`) |
+| `6` | Read and write (`rw-`) |
+| `5` | Read and execute (`r-x`) |
+| `4` | Read only (`r--`) |
+| `0` | No permissions (`---`) |
+
+Examples:
+
+```bash
+chmod 755 script.sh
+```
+
+Gives the owner full permissions and gives the group and others read and execute permissions.
+
+```bash
+chmod 644 file.txt
+```
+
+Gives the owner read and write permissions, while the group and others can only read.
+
+```bash
+chmod 600 file.txt
+```
+
+Allows only the owner to read and write.
+
+### Symbolic Permissions
+
+```bash
+chmod +x script.sh
+```
+
+Adds execute permission for everyone.
+
+```bash
+chmod u+x script.sh
+```
+
+Adds execute permission for the owner only.
+
+```bash
+chmod go-w file.txt
+```
+
+Removes write permission from the group and others.
+
+```bash
+chmod a+r file.txt
+```
+
+Adds read permission for everyone.
+
+To check permissions:
+
+```bash
+ls -l file.txt
+```
+
+### Changing Ownership
+
+Ownership determines which user and group are associated with a file or directory.
+
+| Command | Purpose |
+|---|---|
+| `chown` | Changes the owner |
+| `chgrp` | Changes the group |
+| `chmod` | Changes permissions |
+
+Examples:
+
+```bash
+sudo chown user1 file.txt
+```
+
+Changes the owner to `user1`.
+
+```bash
+sudo chown user1:group1 file.txt
+```
+
+Changes both the owner and group.
+
+```bash
+sudo chgrp group1 file.txt
+```
+
+Changes the group only.
+
+`sudo` runs a command with administrator privileges when the user is authorized.
+
+The `-R` option means recursive. It applies a change to a directory and its contents.
+
+### Hidden Files
+
+Hidden files are files or folders whose names begin with a dot (`.`).
+
+Examples:
+
+```text
+.ssh
+.git
+.sampledata
+```
+
+Linux does not display hidden files when using the normal `ls` command.
+
+To display hidden files:
+
+```bash
+ls -a
+```
+
+
+### Home Directory
+
+The home directory is your personal folder where your files, folders and personal settings are stored.
+
+To display your home directory:
+
+```bash
+echo $HOME
+```
+
+To move into it:
+
+```bash
+cd
+```
+
+Or:
+
+```bash
+cd ~
+```
+
+To check your current location:
+
+```bash
+pwd
+```
+
+
+
+---
+
+## Important Linux Commands
+
+| Command | Purpose |
+|---|---|
+| `pwd` | Shows the current directory |
+| `ls` | Lists files and folders |
+| `cd` | Changes directory |
+| `mkdir` | Creates a directory |
+| `mkdir -p` | Creates directories and missing parent directories |
+| `touch` | Creates an empty file |
+| `cp` | Copies files or folders |
+| `mv` | Moves or renames files or folders |
+| `rm` | Deletes files |
+| `cat` | Displays file contents |
+| `head` | Displays the beginning of a file |
+| `tail` | Displays the end of a file |
+| `grep` | Searches for matching text |
+| `find` | Searches for files and directories |
+| `chmod` | Changes permissions |
+| `chown` | Changes ownership |
+| `chgrp` | Changes group ownership |
+| `history` | Displays previously used commands |
+| `clear` | Clears the terminal screen |
+| `man` | Displays a command's manual |
+| `sed` | Manipulates text |
+| `awk` | Extracts and processes columns |
+
+---
+
+
+
+
+##  Key Points 
+
+1. Absolute path - Full location of a file or folder.
+2. Relative path - Location based on the current directory.
+3. Pipe (`|`) - Passes output between commands.
+4. Wildcard (`*`) - Matches any number of characters.
+5. Wildcard (`?`) - Matches exactly one character.
+6. Redirection (`>`) - Overwrites a file.
+7. Redirection (`>>`) - Appends information to a file.
+8. `sed` - Manipulates text.
+9. `awk` - Extracts and processes columns.
+10. Bash script - Automates commands.
+11. `chmod` - Changes permissions.
+12. `chown` - Changes ownership.
+13. `~` - Represents the home directory.
+
