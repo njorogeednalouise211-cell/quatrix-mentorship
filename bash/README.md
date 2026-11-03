@@ -328,7 +328,7 @@ You can also use `~`, which represents the home directory:
 ls ~/Documents/quatrix/quatrix-mentorship
 ```
 
-### 1.2 Relative Path
+###  Relative Path
 
 A relative path gives the location of a file or folder based on the current working directory.
 
@@ -583,7 +583,7 @@ echo -n > my_notes.txt
 
 ---
 
-## 6. Variables and Environment Variables
+##  Variables and Environment Variables
 
 A variable is a named space used to store information that can be used later.
 
@@ -738,7 +738,7 @@ Removes empty lines from the displayed output.
 
 It is useful when working with data arranged in rows and columns, such as CSV files.
 
-### Example 1: Extract File Names
+###  Extract File Names
 
 ```bash
 ls -l | awk '{print $9}'
@@ -746,7 +746,7 @@ ls -l | awk '{print $9}'
 
 Displays the ninth column of a standard `ls -l` listing, which commonly contains the file name.
 
-### Example 2: Extract File Size and Name
+### Extract File Size and Name
 
 ```bash
 ls -l | awk '{print $5, $9}'
@@ -757,7 +757,7 @@ Displays:
 - `$5` - File size.
 - `$9` - File name.
 
-### Example 3: Extract Information From a CSV File
+### Extract Information From a CSV File
 
 ```bash
 awk -F';' '{print $2}' file.csv
@@ -779,7 +779,7 @@ A Bash script is a text file containing commands that Bash executes in order.
 
 Scripts are useful for automating tasks and avoiding repetitive typing.
 
-### 10.1 Creating Your First Script
+###  Creating First Script
 
 Example:
 
@@ -870,7 +870,7 @@ echo 'Hello, $name'
 
 **Remember:** Double quotes expand variables, while single quotes preserve the text exactly as written.
 
-### 10.3 Exit Status
+### Exit Status
 
 An exit status tells you whether a command completed successfully.
 
@@ -1256,7 +1256,6 @@ ls -a
 
 ### Home Directory
 
-The home directory is your personal folder where your files, folders and personal settings are stored.
 
 To display your home directory:
 
