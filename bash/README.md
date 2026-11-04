@@ -1,3 +1,97 @@
+## ***BASH ANSWERS***
+## 1.What is Bash?
+- (Bourne Again Shell) command-line program used in linux to communicate with a computer through typing commands.
+
+   -  **Other alternatives to Bash**
+        
+         1. zsh (z shell)
+         2. Fish (friendly interactive shell)
+         3. ksh (korn shell)
+         4. windows powershell
+
+## 2.What is zsh?
+ - (z shell) is a command-line shell used in Linux that allows users to communicate with the operating system by typing commands.
+
+  **DIFFERENCES BETWEEN ZSH AND BASH**
+
+| Bash | Zsh |
+|---|---|
+| Has basic tab completion. | Has advanced tab completion. |
+| Less customizable by default. | More customizable with themes and plugins. |
+| Has basic command suggestions. | Supports advanced command suggestions. |
+| Commonly used in Linux systems. | Commonly used in macOS systems. |
+
+## 3. Importance of learning Bash/Zsh commmands.
+ - Graphical user interface (GUI) makes using a computer easier but Learning the command line gives users more flexibility and control.
+
+    
+    **WHY USE TERMIINAL INSTEAD OF MOUSE**
+
+* **Instant Speed:** A user can rename or move 5,000 files in a second with one short line of text instead of hours of clicking.
+* **Auto-Pilot:** Save your commands in a text file so your computer runs them automatically.
+* **Fixing Websites:** Internet servers do not have visual screens or desktops at all—typing text commands is the only way to control them.
+
+## 4.Habits to Avoid Accidental Deletions with `rm`
+
+* **The "Look Before You Leap" Habit:** Always run the `ls` command with your exact wildcard pattern (e.g., `ls *.txt`) to verify exactly what files appear on screen *before* you change `ls` to `rm`.
+* **The "Safety Prompt" Habit:** Include the `-i` flag (e.g., `rm -i filename.txt`) to force the computer to stop and ask you `"Are you sure? (y/n)"` before it deletes each file.
+* **The "End of Options" Habit:** Put a double dash `--` right before your file names (e.g., `rm -- "$filename"`). This stops a file that accidentally starts with a dash (like `-file.txt`) from being mistaken for a command tricking the system.
+
+## 5.Single Quotes vs. Double Quotes in the Shell.
+
+* **Double Quotes (`" "`) are Flexible:** They allow **variable expansion** (swapping a variable name for its value) and **command substitution** (running a command inside the text).
+* **Single Quotes (`' '`) are Strict:** They turn off all evaluation, freezing everything inside so the shell treats it as a **literal text string** exactly as typed.
+
+### Example 
+
+```bash
+NAME="Edna"
+
+# Double quotes swap \$NAME for Edna
+echo "Hello \$NAME"  # Outputs: Hello Edna
+
+# Single quotes print the literal characters \$NAME
+echo 'Hello \(NAME'  # Outputs: Hello \)NAME
+```
+
+## 6.What is an Exit Status?
+
+* An exit status is a number that a command drops automatically when it finishes running to tell the system if it succeeded or failed.
+* A code of `0` means perfect success.
+* Any number from `1` or any different number from `0` means an error occurred(the specific number tells the system exactly what went wrong).
+
+### How to See the Last Exit Status
+
+Run the command **`echo $?`** immediately after a command to print its success or error number on your screen.
+
+```bash
+# A successful command
+ls ~
+echo \$?  # Outputs: 0
+
+# A failing command
+ls /folder-that-does-not-exist
+echo \$?  # Outputs: 2 (or another non-zero error code)
+```
+
+
+
+
+
+
+
+
+## ***BASH NOTES***
+
+
+
+
+
+
+
+
+
+
 # 1.Navigating and Listing Essentials
 
 ##  The `ls` Command (List Contents)
